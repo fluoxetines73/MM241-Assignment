@@ -15,6 +15,7 @@ if __name__ == "__main__":
     observation, info = env.reset(seed=42)
 
     # Test GreedyPolicy
+    print("Test GreedyPolicy")
     gd_policy = GreedyPolicy()
     ep = 0
     while ep < NUM_EPISODES:
@@ -22,14 +23,15 @@ if __name__ == "__main__":
         observation, reward, terminated, truncated, info = env.step(action)
 
         if terminated or truncated:
-            observation, info = env.reset(seed=ep)
             print(info)
+            observation, info = env.reset(seed=ep)
             ep += 1
 
     # Reset the environment
     observation, info = env.reset(seed=42)
 
     # Test RandomPolicy
+    print ("Test RandomPolicy")
     rd_policy = RandomPolicy()
     ep = 0
     while ep < NUM_EPISODES:
@@ -37,8 +39,8 @@ if __name__ == "__main__":
         observation, reward, terminated, truncated, info = env.step(action)
 
         if terminated or truncated:
-            observation, info = env.reset(seed=ep)
             print(info)
+            observation, info = env.reset(seed=ep)
             ep += 1
 
     # Uncomment the following code to test your policy
@@ -54,5 +56,21 @@ if __name__ == "__main__":
 
     #     if terminated or truncated:
     #         observation, info = env.reset()
+
+    # Reset the environment
+    observation, info = env.reset(seed=42)
+
+    # Test Policy2210xxx
+    print ("Test Policy2210xxx")
+    policy2210xxx = Policy2210xxx()
+    ep = 0
+    while ep < NUM_EPISODES:
+        action = policy2210xxx.get_action(observation, info)
+        observation, reward, terminated, truncated, info = env.step(action)
+
+        if terminated or truncated:
+            print(info)
+            observation, info = env.reset(seed=ep)
+            ep += 1
 
 env.close()
